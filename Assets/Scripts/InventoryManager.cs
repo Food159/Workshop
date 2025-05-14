@@ -1,7 +1,7 @@
 using UnityEngine;
 using NUnit.Framework;
 using System.Collections.Generic;
-using static UnityEditor.Progress;
+//using static UnityEditor.Progress;
 
 public class InventoryManager : MonoBehaviour
 {

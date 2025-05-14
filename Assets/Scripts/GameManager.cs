@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour
     public TMP_Text timerCounterText;
     public Image targetImageIcon;
     public TMP_Text targetAmountText;
+    public GameObject winCanvas;
+    public GameObject loseCanvas;
+    public GameObject gameManagerCanvas;
 
     public bool isPlayerWin = false;
 
@@ -25,8 +28,16 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        if (isPlayerWin) return;
-        if(timerCounter > 0f)
+        //if (isPlayerWin) return;
+        if (isPlayerWin)
+        {
+            winCanvas.SetActive(true);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            gameManagerCanvas.SetActive(false);
+            Time.timeScale = 0;
+        }
+        if (timerCounter > 0f)
         {
             timerCounter -= Time.deltaTime;
             //timerCounterText.text = timerCounter.ToString();
@@ -36,7 +47,12 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("MainMenu");
+            //SceneManager.LoadScene("MainMenu");
+            loseCanvas.SetActive(true);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            gameManagerCanvas.SetActive(false);
+            Time.timeScale = 0;
         }
     }
     private void Awake()
